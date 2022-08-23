@@ -1,9 +1,10 @@
-import { call, put, takeEvery, all } from "redux-saga/effects";
-// import Api from '...'
+import { call, takeEvery, all } from "redux-saga/effects";
+import * as ActionTypes from "../redux/ActionTypes";
+import { SignUpApi } from "../common/signUpApi";
 
 function* signUp(action) {
   try {
-    const user = yield call(SignUpApi, action.payload);
+    const signUpUser = yield call(SignUpApi, action.payload);
   } catch (e) {}
 }
 
@@ -12,5 +13,5 @@ function* watchSignUp() {
 }
 
 export function* signUpSaga() {
-  yield all([watchSignUp]);
+  yield all([watchSignUp()]);
 }
