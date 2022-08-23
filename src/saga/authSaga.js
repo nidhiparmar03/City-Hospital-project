@@ -5,6 +5,7 @@ import { SignUpApi } from "../common/signUpApi";
 function* signUp(action) {
   try {
     const signUpUser = yield call(SignUpApi, action.payload);
+    console.log(signUpUser);
   } catch (e) {}
 }
 
