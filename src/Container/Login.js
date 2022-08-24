@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Formik, Form, useFormik, Field } from "formik";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signupAction } from "../redux/action/SIgnUp.action";
+import { signInAction, signupAction } from "../redux/action/auth.action";
 
 const Login = () => {
   const [userType, setUserType] = useState("Login");
