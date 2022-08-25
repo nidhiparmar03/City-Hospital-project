@@ -16,41 +16,44 @@ import PrivateRoute from "./Route/PrivateRoute";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Provider } from "react-redux";
 import { store } from './redux/Store';
+import { SnackbarProvider } from 'notistack';
 
 
 const App = () => {
   return (
     <>
-      <Provider store={store}>
-        <ThemeProvider>
-          <Header />
-          <Switch>
-            <PublicRoute exact path="/" component={Home} />
-            <PublicRoute exact path="/departments" component={Departments} />
-            <PublicRoute exact path="/doctors" component={Doctors} />
-            <PublicRoute exact path="/medicine" component={Medicine} />
-            <PublicRoute exact path="/about" component={About} />
-            <PublicRoute exact path="/contact" component={Contact} />
-            <PrivateRoute
-              exact
-              path="/book-appointment"
-              component={BookAppointment}
-            />
-            <PrivateRoute
-              exact
-              path="/list-appointment"
-              component={ListAppointment}
-            />
-            <PublicRoute
-              exact
-              path="/login"
-              restricted={true}
-              component={Login}
-            />
-          </Switch>
-          <Footer />
-        </ThemeProvider>
-      </Provider>
+      <SnackbarProvider maxSnack={3}>
+        <Provider store={store}>
+          <ThemeProvider>
+            <Header />
+            <Switch>
+              <PublicRoute exact path="/" component={Home} />
+              <PublicRoute exact path="/departments" component={Departments} />
+              <PublicRoute exact path="/doctors" component={Doctors} />
+              <PublicRoute exact path="/medicine" component={Medicine} />
+              <PublicRoute exact path="/about" component={About} />
+              <PublicRoute exact path="/contact" component={Contact} />
+              <PrivateRoute
+                exact
+                path="/book-appointment"
+                component={BookAppointment}
+              />
+              <PrivateRoute
+                exact
+                path="/list-appointment"
+                component={ListAppointment}
+              />
+              <PublicRoute
+                exact
+                path="/login"
+                restricted={true}
+                component={Login}
+              />
+            </Switch>
+            <Footer />
+          </ThemeProvider>
+        </Provider>
+      </SnackbarProvider>
     </>
   );
 };

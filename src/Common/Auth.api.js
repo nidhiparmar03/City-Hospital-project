@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../Firebase";
+import { auth } from "../Firebase";
 
 
 export const SignUpApi = (data) => {
@@ -9,8 +9,9 @@ export const SignUpApi = (data) => {
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                console.log(user);
 
-                onAuthStateChanged(auth, (signUpUser) => {
+                onAuthStateChanged(auth, (user) => {
                     sendEmailVerification(auth.currentUser)
                         .then(() => {
                             resolve({ payload: "Check Your Email." });
@@ -44,9 +45,9 @@ export const SignInapi = (data) => {
                 const user = userCredential.user;
 
                 if (user.emailVerified) {
-                    reject({ payload: "Login Is Succesfully" });
+                    resolve({ payload: "Login Is Succesfully" });
                 } else {
-                    reject({ payload: "First Is Email Varify." });
+                    resolve({ payload: "First Is Email Varify." });
                 }
 
                 console.log(user);

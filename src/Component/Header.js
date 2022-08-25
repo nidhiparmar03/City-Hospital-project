@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
+import Alert from "./Alert/alert";
 
 const Header = () => {
   const value = useContext(ThemeContext);
@@ -34,6 +35,7 @@ const Header = () => {
             <button onClick={() => value.toggleTheme(value.theme)}>
               Change Mode
             </button>
+            <Alert />
           </div>
         </div>
         <header id="header" className={`fixed-top ${value.theme}`}>
