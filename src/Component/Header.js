@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
 import { useDispatch, useSelector } from 'react-redux';
-import { signOutAction} from '../redux/action/auth.action';
+import { signOutAction } from '../redux/action/auth.action';
 import Alert from "./Alert/alert";
 
 const Header = () => {
@@ -131,17 +131,16 @@ const Header = () => {
             >
               <span className="d-none d-md-inline">Make an</span> Appointment
             </NavLink>
-            <NavLink className="appointment-btn scrollto" to="/Book_apt"><span className="d-none d-md-inline"></span>Make an Appointment</NavLink>
-                    {
-                        auth.user === null ?
-                            <NavLink to="/Login" className="appointment-btn scrollto">
-                                <span className="d-none d-md-inline">Login/ Signup</span>
-                            </NavLink>
-                            :
-                            <NavLink to="/" className="appointment-btn scrollto">
-                                <span className="d-none d-md-inline" onClick={() => { dispatch(signOutAction()) }}>Logout</span>
-                            </NavLink>
-                    }
+            {
+              auth.user === null ?
+                <NavLink to="/Login" className="appointment-btn scrollto">
+                  <span className="d-none d-md-inline">Login/ Signup</span>
+                </NavLink>
+                :
+                <NavLink to="/" className="appointment-btn scrollto">
+                  <span className="d-none d-md-inline" onClick={() => { dispatch(signOutAction()) }}>Logout</span>
+                </NavLink>
+            }
           </div>
         </header>
       </div>

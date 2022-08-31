@@ -17,8 +17,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { Provider } from "react-redux";
 import { store } from './redux/Store';
 import { SnackbarProvider } from 'notistack';
-import { PersistGate } from 'redux-persist/integration/react';
-import persistStore from "redux-persist/es/persistStore";
+// import { PersistGate } from 'redux-persist/integration/react';
+// import persistStore from "redux-persist/es/persistStore";
 
 
 
@@ -27,7 +27,7 @@ const App = () => {
     <>
       <SnackbarProvider maxSnack={3}>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+          {/* <PersistGate loading={null} persistor={persistor}> */}
             <ThemeProvider>
               <Header />
               <Switch>
@@ -56,7 +56,7 @@ const App = () => {
               </Switch>
               <Footer />
             </ThemeProvider>
-          </PersistGate>
+          {/* </PersistGate> */}
         </Provider>
       </SnackbarProvider>
     </>
